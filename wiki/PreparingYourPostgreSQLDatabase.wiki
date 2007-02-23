@@ -34,10 +34,11 @@ Goto Step 1
 If that didn't work...
 
 == Step 1.2: Another thing to try ==
+{{{
 tar xzvf postgresql-version.tgz
 cd postgresql-version
 ./configure
-
+}}}
 Goto Step 1.1
 
 == Step 2: Setup your Database ==
@@ -76,4 +77,3 @@ your_data_base_name=# select to_tsvector('default','Our first string used today 
 
 =To Do=
 Some users might have to patch PostgreSQL - it'd be nice to have more information on this and also clean up trouble shooting a bit.
-
