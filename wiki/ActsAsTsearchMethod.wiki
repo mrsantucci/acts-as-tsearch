@@ -1,4 +1,4 @@
-#summary TSearch Searching
+#summary How to declare acts_as_tsearch in your class
 #labels Phase-Implementation
 
 = Introduction =
