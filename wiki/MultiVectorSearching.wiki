@@ -28,7 +28,7 @@ Profile.find_by_tsearch("who what where")
 
 = Multiple Vectors =
 
-When you add multiple vectors you need to start specifying which vector you're using or (this might be risky) depend on the first one being the default.
+When you add multiple vectors you need to start specifying which vector you're using.
 
 Examples.... let's say we have a *profiles* table and we want to be able to search on public data versus private data.
 
@@ -49,11 +49,10 @@ Profile.acts_as_tsearch :public_vector => {:fields => [:name, :public_info]},
 
 You then simply specify the vector when search (see [FindByTsearchMethod find_by_search] doc for details):
 {{{
-    #these two should be the same...
+    #Only search public fields
     p = Profile.find_by_tsearch("ben",nil,{:vector => "public_vector"})
-    p = Profile.find_by_tsearch("ben")
 
-    #you always need to specify the second vector:
+    #Only search private fields
     p = Profile.find_by_tsearch("ben",nil,{:vector => "private_vector"})
 }}}
  
