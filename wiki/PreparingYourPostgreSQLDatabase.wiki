@@ -73,7 +73,7 @@ your_data_base_name=# select to_tsvector('default','Our first string used today 
 --------------------------------------------
  'use':4 'first':2,6 'today':5 'string':3,7
 (1 row)
-
+}}}
 
 =To Do=
 Some users might have to patch PostgreSQL - it'd be nice to have more information on this and also clean up trouble shooting a bit.
