@@ -1,5 +1,5 @@
+#summary Preparing your PostgreSQL Database
 #labels Phase-Deploy
-#Preparing your PostgreSQL Database
 
 = Introduction =
 
