@@ -14,6 +14,7 @@ Also see:
 = Ground Rules =
   # acts_as_tsearch will create a new column *vectors* in your table if it doesn't exist and update it with the indexed values.  This column name can be overridden and there can be more than one of these vector columns.  We discuss this in [MultiVectorSearching Multi Vector Searching] and [Migrations Migrations]
   # acts_as_tsearch adds a tsearch_rank column to all results and default sorts (descending) on that column.  See the [FindByTsearchMethod find_by_tsearch method] discussion for details.
+  # By default acts_as_tsearch will update the vector unless told not to (see Method Definition below)
 
 = Simple =
 
@@ -81,3 +82,26 @@ results = BlogEntry.find_by_tsearch("who what where")
 }}}
 
 As you can see this is pretty hackish.  It's only been lightly tested with two tables so far, still a work in progress.
+
+= Complete Method Definition ==
+_To Do: needs work_
+Fully verbose call example
+{{{
+Model.acts_as_tsearch :vectors => {
+   :local => "default",
+   :auto_update_index => true,
+   :fields => {
+      "a" => {:columns => ["blog_entries.title"], :weight => 1},
+      "b" => {:columns => ["blog_entries.description"], :weight => 0.4},
+      "c" => {:columns => ["blog_entries.name"], :weight => 0.2},
+      "d" => {:columns => ["blog_comments.comment"], :weight => 0.1}
+   },
+   :tables => {
+      :blog_comments => {
+         :from => "blog_entries b2 left outer join 
+                   blog_comments on blog_comments.blog_entry_id = b2.id",
+         :where => "b2.id = blog_entries.id"
+      }
+   },
+   :another_vector => {... same format as above ...}
+}}}
