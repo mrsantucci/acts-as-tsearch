@@ -1,0 +1,5 @@
+#summary Method documentation for find_by_tsearch
+
+= Introduction =
+
+Coming soon...
