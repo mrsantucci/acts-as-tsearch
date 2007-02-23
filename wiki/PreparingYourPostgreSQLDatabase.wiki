@@ -1,5 +1,5 @@
 #labels Phase-Deploy
-#Setting up [http://www.postgresql.org/ PostgreSQL]
+#Preparing your PostgreSQL Database
 
 = Introduction =
 
