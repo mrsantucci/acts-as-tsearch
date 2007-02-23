@@ -28,7 +28,7 @@ Profile.find_by_tsearch("who what where")
 
 = Multiple Vectors =
 
-When you add multiple vectors you need to start specifying which vector you're using.
+When you add multiple vectors you need to start specifying which vector you're using.  A RuntimeError will be thrown if you fail to specify a vector on multiple vector tables unless the first vector happens to be named "vectors".  
 
 Examples.... let's say we have a *profiles* table and we want to be able to search on public data versus private data.
 
