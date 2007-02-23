@@ -1,0 +1,6 @@
+#summary Migration notes when using find_by_tsearch
+
+= Introduction =
+
+Coming soon...
+
