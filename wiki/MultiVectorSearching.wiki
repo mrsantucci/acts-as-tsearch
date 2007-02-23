@@ -1,0 +1,8 @@
+#summary Multiple vectors per table
+
+= Introduction =
+
+By default acts_as_tsearch just creates a "vectors" column and performs all searches against that column.  Support multiple vector columns however.  This could be useful for creating searches that are security specific (for logged in, logged out scenarios).
+
+= Single Vector =
+
