@@ -1,0 +1,36 @@
+body {
+	background-color:#F0F0F0;
+	margin:0;
+	padding:0;
+	margin-left:50px;
+	margin-right:50px;
+	font-family:verdana;
+	color:#535353;
+}
+
+#search-form {
+	padding:50px;
+	background-image: url(/images/gradient-search.jpg);
+	background-repeat: repeat-x;
+	background-color:#65b3da;
+}
+#search-form b, #search-form input {
+	font-size:2em;
+}
+
+#content {
+	padding:50px;
+	border:solid 1px #8F8F8F;
+	background-color:#FFFFFF;
+}
+a {
+	color:#535353;	
+}
+.result h1 a {
+	text-decoration:none;
+}
+hr {
+	background-color:#FF6600;
+	color:#FF6600;
+	height: 5px;
+}

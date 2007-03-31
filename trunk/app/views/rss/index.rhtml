@@ -1,0 +1,18 @@
+<div id="search-form" align="center">
+	<a href="http://code.google.com/p/acts-as-tsearch/" target="_blank"><img src="/images/tsearch.png"></a>
+	<p><b>TSearch </b><%= text_field_tag  :search, nil, :size => "20" %></p>
+	
+<%= observe_field(  :search,
+          :frequency  =>  0.5,
+          :update     =>  :content,
+          :url        =>  { :action =>  :search },
+		  :with => "'search='+escape(value)") %>
+</div>
+
+<div id="content" style="margin-bottom:100px;">
+	<p>This is a demo site that comes with <a href="http://code.google.com/p/acts-as-tsearch/" target="_blank">acts_as_tsearch</a>.</p>
+	<p>Sample data being used for search is from a <a href="http://feeds.feedburner.com/RidingRails" target="_blank">RSS feed</a> on <a href="http://weblog.rubyonrails.org/" target="_blank">Riding Rails</a>.</p>
+	<p><a href="http://code.google.com/p/acts-as-tsearch/" target="_blank">Acts_as_tsearch</a> is a plugin for <a href="http://www.rubyonrails.org/" target="_blank">Ruby on Rails</a> which makes it simple to implement scalable, full text search for Rails if you're using <a href="http://www.sai.msu.su/~megera/postgres/gist/tsearch/V2/" target="_blank">PostgreSQL</a> as your database. It uses the included TSearch2 engine which comes with PostgreSQL but wraps is with a familiar 'acts_as' implementation for easy use.</p>
+	
+	<p>Yes - I know - this is the worst Web 2.0 design ever... that's why I stick to coding.</p>
+</div>

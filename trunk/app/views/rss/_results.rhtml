@@ -1,0 +1,13 @@
+
+<% if !@results.nil? %>
+	<% if @results.size > 0 %>
+		<% @results.each do |r| %>
+			<div class="result">
+				<h1><a href="r.link" target="_blank"><%=r.title%></a><hr/></h1>
+				<%=r.summary%>
+			</div>
+		<% end %>
+	<% else %>
+		<p style="margin:25px;">Nothing found for <b><%=@search%></b>.  Try <b>ruby</b>.  You're search a RSS feed <a href="http://weblog.rubyonrails.org/" target="_blank">Riding Rails</a>.  View whole data <a href="/rss/all">here.</a></p>
+	<% end %>
+<% end %>
