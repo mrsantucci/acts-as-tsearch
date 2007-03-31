@@ -8,7 +8,7 @@ After you've [PreparingYourPostgreSQLDatabase set-up your database] follow these
 == Get the plugin ==
 
 {{{
-ruby script/plugin install http://acts-as-tsearch.googlecode.com/svn/trunk
+ruby script/plugin install http://acts-as-tsearch.googlecode.com/svn/trunk/vendor/plugins/acts_as_tsearch
 }}}
 
 == Add acts_as_tsearch to a model ==
