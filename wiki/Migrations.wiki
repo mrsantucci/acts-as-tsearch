@@ -1,6 +1,5 @@
 #summary Migration notes when using find_by_tsearch
 
-= Migrations with TSearch =
 
 TSearch will create indexes for your table the first time you search but, that's not really practical if you have really large tables.  
 
@@ -19,4 +18,3 @@ If you wanted to update the vectors (search indexes) you'd just do:
 BlogEntry.create_vector  #doesn't hurt to try, even if it exists
 BlogEntry.update_vector
 }}}
-
