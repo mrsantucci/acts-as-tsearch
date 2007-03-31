@@ -1,0 +1,7 @@
+development:
+  adapter: postgresql
+  database: tsearch_development
+  username: 
+  password: 
+  host: localhost
+

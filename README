@@ -1,0 +1,30 @@
+== Welcome to the TSearch demo app
+
+To get this up and running do the following
+
+create a database:
+	> createdb tsearch_development 
+
+Fill in the blanks in database.yml
+
+	development:
+	  adapter: postgresql
+	  database: tsearch_development
+	  username: 
+	  password: 
+	  host: localhost
+
+Setup the db with tsearch2.  Try the dbsetup.sh script or see http://code.google.com/p/acts-as-tsearch/ for instructions if that doesn't work.
+
+	> chmod 755 dbsetup.sh
+	> sudo ./dbsetup.sh tsearch_development whatever-your-db-username-is
+	
+You might also need the feedtools gem for this demo...
+
+	> sudo gem install feedtools
+	
+
+Hopefully that's it.  Let me know if you run into problems so we can make it better for the next person.
+
+-ben
+wiseleyb@gmail.com
