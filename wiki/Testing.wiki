@@ -1,0 +1,88 @@
+#summary Unit testing tsearch.
+
+= Introduction =
+
+Unit testing has some gotchas with tsearch - but they're not too bad.
+
+
+= Details =
+
+Before running your unit tests you need to make sure your test db is setup with tsearch.  This shell script is included in the source code but is still pretty beta (I've only tested this on my Mac).  You need to run it as root... and the general warnings around that apply. :)
+
+You should do a "createdb [dbname]" if it doesn't exist yet.  I've noticed my testdb get's into a strange state now and then.  I haven't tracked it down yet but dropping and recreated the test db seems to fix (then run the script below).
+
+The plugin has some unit tests you can try... you need to do a few things first:
+{{{
+createdb acts_as_tsearch_test
+sudo su postgres
+psql
+postgres=# create user acts_as_tsearch_test;
+postgres=# alter user acts_as_tsearch_test with password 'acts_as_tsearch_test';
+postgres=# grant all on database acts_as_tsearch_test to acts_as_tsearch_test;
+postgres=# \q
+exit
+cd ~/dev/tsearch  #or where ever your rails app is
+chmod 755 dbsetup.sh
+sudo dbsetup.sh acts_as_tsearch_test acts_as_tsearch_test
+rake test:plugins
+}}}
+
+If anyone has ideas on how to simplify this I'd love to hear them!
+
+Here's the dbsetup.sh script that's in the root of the source code (in the sample application)
+
+{{{
+#
+# See if tsearch2.sql exists on the system
+#
+sqlfile=$(locate /tsearch2.sql)
+if [ -z "$sqlfile"]
+then
+	echo "tsearch2.sql was not found on this system - please see http://code.google.com/p/acts-as-tsearch/wiki/PreparingYourPostgreSQLDatabase for details."
+	exit 
+fi
+
+#
+# Check that they ran this as postgres
+#
+if [ "$LOGNAME" != "root" ]
+then
+	echo "This script needs to be run as user root"
+	echo "Try "
+	echo "    su root"
+	echo "      or"
+	echo "    sudo su root"
+	exit 
+fi
+
+#
+# Check required parameters
+#
+db=${1}
+un=${2}
+if [ -z "$1" "$2" ]
+then
+	echo "Usage: `basename $0 $1` db-name db-username"
+	echo "Example: `basename $0 $1` tsearch wiseleyb"
+	echo "     would setup database tsearch for database username wiseleyb"
+	exit $E_NOARGS
+fi
+
+echo "grant all on public.pg_ts_cfg to $un;
+grant all on public.pg_ts_cfgmap to $un; 
+grant all on public.pg_ts_dict to $un; 
+grant all on public.pg_ts_parser to $un;" > tmp_db_setup_grant_file.sql
+
+su postgres << EOF
+#
+# Load sql file
+#
+psql $db < $sqlfile
+
+#
+# Grant permissions
+#
+psql $db < tmp_db_setup_grant_file.sql
+EOF
+rm tmp_db_setup_grant_file.sql
+}}}
