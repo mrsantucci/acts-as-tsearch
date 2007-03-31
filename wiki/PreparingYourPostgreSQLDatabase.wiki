@@ -5,6 +5,12 @@
 
 [http://www.sai.msu.su/~megera/postgres/gist/tsearch/V2/ TSearch] comes with current releases of [http://www.postgresql.org/ PostgreSQL].  Depending on how you installed Postgres you might to do some of these steps.
 
+I recently added an experimental shell script to the root of the project called dbsetup.sh... you can give that a shot if you want - it might do this all for you:
+{{{
+cd ~/dev/tsearch [or where ever your rails app is]
+chmod 755 dbsetup.sh
+sudo ./dbsetup.sh your-db-name your-db-username
+}}}
 
 == Step 1: Does TSearch exist? ==
 
