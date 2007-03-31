@@ -18,7 +18,10 @@ Setup the db with tsearch2.  Try the dbsetup.sh script or see http://code.google
 
 	> chmod 755 dbsetup.sh
 	> sudo ./dbsetup.sh tsearch_development whatever-your-db-username-is
-	
+
+Do a 
+	> rake db:migrate
+
 You might also need the feedtools gem for this demo...
 
 	> sudo gem install feedtools
