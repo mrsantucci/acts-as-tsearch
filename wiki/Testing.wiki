@@ -23,7 +23,7 @@ postgres=# \q
 exit
 cd ~/dev/tsearch  #or where ever your rails app is
 chmod 755 dbsetup.sh
-sudo dbsetup.sh acts_as_tsearch_test acts_as_tsearch_test
+sudo ./dbsetup.sh acts_as_tsearch_test acts_as_tsearch_test
 rake test:plugins
 }}}
 
