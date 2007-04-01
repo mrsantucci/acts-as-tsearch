@@ -1,6 +1,25 @@
+# We add schema_search_path to enable our custom rake to recreate from a schema instead of 
+# dropping the db and recreating.  The reason behind this is, by dropping the db you then need to re-run
+# 	sudo ./dbsetup.sh tsearch_test [username]
+# This is a pain to do everytime you do a rake test
+# For more information on this see:
+# 		http://dev.rubyonrails.org/ticket/7665
+#   	custom rake in /vendor/plugins/acts_as_tsearch/tasks/test.rake
+#
+# Also note we've added /vendor/plugins/acts_as_tsearch/lib/postgres_extensions.rb which allows the custom columns to work with migrations
+ 
 development:
   adapter: postgresql
   database: tsearch_development
   username: 
   password: 
   host: localhost
+  schema_search_path: public
+
+test:
+  adapter: postgresql
+  database: tsearch_test
+  username: 
+  password: 
+  host: localhost
+  schema_search_path: public
