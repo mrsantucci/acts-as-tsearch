@@ -16,13 +16,29 @@ ActiveRecord::Schema.define(:version => 1) do
     t.column "dict_name", :string, :limit => nil
   end
 
-# Could not dump table "pg_ts_dict" because of following StandardError
-#   Unknown type 'regprocedure' for column 'dict_init', yaml: #<ActiveRecord::ConnectionAdapters::Column:0x343b8b0 @limit=nil, @name="dict_init", @null=true, @primary=nil, @default=nil, @scale=nil, @sql_type="regprocedure", @type=nil, @precision=nil>, types: {:boolean=>{:name=>"boolean"}, :timestamp=>{:name=>"timestamp"}, :decimal=>{:name=>"decimal"}, :float=>{:name=>"float"}, :integer=>{:name=>"integer"}, :date=>{:name=>"date"}, :text=>{:name=>"text"}, :primary_key=>"serial primary key", :datetime=>{:name=>"timestamp"}, :binary=>{:name=>"bytea"}, :time=>{:name=>"time"}, :string=>{:name=>"character varying", :limit=>255}} 
+  create_table "pg_ts_dict", :id => false, :force => true do |t|
+    t.column "dict_name",       :text,                  :null => false
+    t.column "dict_init",       :string, :limit => nil
+    t.column "dict_initoption", :text
+    t.column "dict_lexize",     :string, :limit => nil, :null => false
+    t.column "dict_comment",    :text
+  end
 
-# Could not dump table "pg_ts_parser" because of following StandardError
-#   Unknown type 'regprocedure' for column 'prs_start', yaml: #<ActiveRecord::ConnectionAdapters::Column:0x3433944 @limit=nil, @name="prs_start", @null=false, @primary=nil, @default=nil, @scale=nil, @sql_type="regprocedure", @type=nil, @precision=nil>, types: {:boolean=>{:name=>"boolean"}, :timestamp=>{:name=>"timestamp"}, :decimal=>{:name=>"decimal"}, :float=>{:name=>"float"}, :integer=>{:name=>"integer"}, :date=>{:name=>"date"}, :text=>{:name=>"text"}, :primary_key=>"serial primary key", :datetime=>{:name=>"timestamp"}, :binary=>{:name=>"bytea"}, :time=>{:name=>"time"}, :string=>{:name=>"character varying", :limit=>255}} 
+  create_table "pg_ts_parser", :id => false, :force => true do |t|
+    t.column "prs_name",      :text,                  :null => false
+    t.column "prs_start",     :string, :limit => nil, :null => false
+    t.column "prs_nexttoken", :string, :limit => nil, :null => false
+    t.column "prs_end",       :string, :limit => nil, :null => false
+    t.column "prs_headline",  :string, :limit => nil, :null => false
+    t.column "prs_lextype",   :string, :limit => nil, :null => false
+    t.column "prs_comment",   :text
+  end
 
-# Could not dump table "rss_entries" because of following StandardError
-#   Unknown type 'tsvector' for column 'vectors', yaml: #<ActiveRecord::ConnectionAdapters::Column:0x342c02c @limit=nil, @name="vectors", @null=true, @primary=nil, @default=nil, @scale=nil, @sql_type="tsvector", @type=nil, @precision=nil>, types: {:boolean=>{:name=>"boolean"}, :timestamp=>{:name=>"timestamp"}, :decimal=>{:name=>"decimal"}, :float=>{:name=>"float"}, :integer=>{:name=>"integer"}, :date=>{:name=>"date"}, :text=>{:name=>"text"}, :primary_key=>"serial primary key", :datetime=>{:name=>"timestamp"}, :binary=>{:name=>"bytea"}, :time=>{:name=>"time"}, :string=>{:name=>"character varying", :limit=>255}} 
+  create_table "rss_entries", :force => true do |t|
+    t.column "title",   :string
+    t.column "summary", :text
+    t.column "link",    :string
+    t.column "vectors", :string, :limit => nil
+  end
 
 end
