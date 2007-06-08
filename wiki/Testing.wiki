@@ -22,6 +22,12 @@ rake
 
 If anyone has ideas on how to simplify this I'd love to hear them!
 
+= Running your unit tests =
+
+You can also use dbsetup.sh on your test database.
+
+= dbsetup.sh =
+
 Here's the dbsetup.sh script that's in the root of the source code (in the sample application)
 
 {{{
