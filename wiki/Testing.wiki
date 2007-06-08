@@ -2,8 +2,7 @@
 
 = Introduction =
 
-Unit testing has some gotchas with tsearch - but they're not too bad.  The dbsetup.sh script will modify your postgres template1 database as well as tsearch'ify your current db.  It's a good idea to **backup** before running any of this.
-
+Unit testing has some gotchas with tsearch - but they're not too bad.  The dbsetup.sh script will modify your postgres template1 database as well as tsearch'ify your current db.  It's a good idea to *backup* before running any of this.
 
 = Details =
 
@@ -29,6 +28,10 @@ You can also use dbsetup.sh on your test database.
 cd ~/dev/tsearch/vendor/plugins/acts_as_tsearch  #assumes app is ~/dev/tsearch
 chmod 755 dbsetup.sh
 sudo ./dbsetup.sh yourapp_development yourusername
+
+= Why is this necessary? =
+
+The reason you need to do all this crap is that tsearch adds custom column types.  If you don't modify template1 (the master template in postgres) when you go to test your application rails will do it's drop/create on test, loose the tsearch columns and bail (without notice) part of the way through creating the new test db when it hits a tsearch column.  Craig Barber did up some custom rake stuff that tries to work around this but I was having a hell of a time getting working, so, I switched the code over to.  It's currently commented out if you want to give it a try.
 
 = dbsetup.sh =
 
