@@ -14,17 +14,10 @@ You should do a "createdb [dbname]" if it doesn't exist yet.  I've noticed my te
 The plugin has some unit tests you can try... you need to do a few things first:
 {{{
 createdb acts_as_tsearch_test
-sudo su postgres
-psql
-postgres=# create user acts_as_tsearch_test;
-postgres=# alter user acts_as_tsearch_test with password 'acts_as_tsearch_test';
-postgres=# grant all on database acts_as_tsearch_test to acts_as_tsearch_test;
-postgres=# \q
-exit
-cd ~/dev/tsearch  #or where ever your rails app is
+cd ~/dev/tsearch/vendor/plugins/acts_as_tsearch  #assumes app is ~/dev/tsearch
 chmod 755 dbsetup.sh
 sudo ./dbsetup.sh acts_as_tsearch_test acts_as_tsearch_test
-rake test:plugins
+rake
 }}}
 
 If anyone has ideas on how to simplify this I'd love to hear them!
