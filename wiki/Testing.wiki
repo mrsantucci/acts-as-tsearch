@@ -28,6 +28,7 @@ You can also use dbsetup.sh on your test database.
 cd ~/dev/tsearch/vendor/plugins/acts_as_tsearch  #assumes app is ~/dev/tsearch
 chmod 755 dbsetup.sh
 sudo ./dbsetup.sh yourapp_development yourusername
+}}}
 
 = Why is this necessary? =
 
@@ -38,7 +39,6 @@ The reason you need to do all this crap is that tsearch adds custom column types
 Here's the dbsetup.sh script that's in the root of the source code (in the sample application)
 
 {{{
-
 #
 # See if tsearch2.sql exists on the system
 #
