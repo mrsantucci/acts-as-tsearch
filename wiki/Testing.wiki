@@ -61,7 +61,10 @@ then
 	exit $E_NOARGS
 fi
 
-echo "grant all on public.pg_ts_cfg to $un;
+echo "create user $un;
+alter user $un with password '$un';
+grant all on database $db to $un;
+grant all on public.pg_ts_cfg to $un;
 grant all on public.pg_ts_cfgmap to $un; 
 grant all on public.pg_ts_dict to $un; 
 grant all on public.pg_ts_parser to $un;" > tmp_db_setup_grant_file.sql
