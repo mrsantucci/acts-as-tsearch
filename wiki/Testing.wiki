@@ -2,14 +2,14 @@
 
 = Introduction =
 
-Unit testing has some gotchas with tsearch - but they're not too bad.
+Unit testing has some gotchas with tsearch - but they're not too bad.  The dbsetup.sh script will modify your postgres template1 database as well as tsearch'ify your current db.  It's a good idea to **backup** before running any of this.
 
 
 = Details =
 
 Before running your unit tests you need to make sure your test db is setup with tsearch.  This shell script is included in the source code but is still pretty beta (I've only tested this on my Mac).  You need to run it as root... and the general warnings around that apply. :)
 
-You should do a "createdb [dbname]" if it doesn't exist yet.  I've noticed my testdb get's into a strange state now and then.  I haven't tracked it down yet but dropping and recreated the test db seems to fix (then run the script below).
+You should do a "createdb [dbname]" if it doesn't exist yet.  
 
 The plugin has some unit tests you can try... you need to do a few things first:
 {{{
@@ -25,12 +25,17 @@ If anyone has ideas on how to simplify this I'd love to hear them!
 = Running your unit tests =
 
 You can also use dbsetup.sh on your test database.
+{{{
+cd ~/dev/tsearch/vendor/plugins/acts_as_tsearch  #assumes app is ~/dev/tsearch
+chmod 755 dbsetup.sh
+sudo ./dbsetup.sh yourapp_development yourusername
 
 = dbsetup.sh =
 
 Here's the dbsetup.sh script that's in the root of the source code (in the sample application)
 
 {{{
+
 #
 # See if tsearch2.sql exists on the system
 #
@@ -64,12 +69,11 @@ then
 	echo "Usage: `basename $0 $1` db-name db-username"
 	echo "Example: `basename $0 $1` tsearch wiseleyb"
 	echo "     would setup database tsearch for database username wiseleyb"
+	echo "Note: the username and database need to exist"
 	exit $E_NOARGS
 fi
 
-echo "create user $un;
-alter user $un with password '$un';
-grant all on database $db to $un;
+echo "grant all on database $db to $un;
 grant all on public.pg_ts_cfg to $un;
 grant all on public.pg_ts_cfgmap to $un; 
 grant all on public.pg_ts_dict to $un; 
@@ -85,6 +89,12 @@ psql $db < $sqlfile
 # Grant permissions
 #
 psql $db < tmp_db_setup_grant_file.sql
+
+#
+# Fix template1
+#
+psql template1 < $sqlfile
+
 EOF
 rm tmp_db_setup_grant_file.sql
 }}}
