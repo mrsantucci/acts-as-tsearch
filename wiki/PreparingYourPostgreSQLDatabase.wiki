@@ -1,7 +1,7 @@
-#summary Preparing your PostgreSQL Database
+#summary Preparing your PostgreSQL Database older than 8.3
 #labels Phase-Deploy
 
-= Introduction =
+= TSearch installation for PostgreSQL older than 8.3 =
 
 [http://www.sai.msu.su/~megera/postgres/gist/tsearch/V2/ TSearch] was an offical contribution module in [http://www.postgresql.org/ PostgreSQL] 7.4 to 8.2. Depending on how you installed Postgres you might to do some of these steps.
 
