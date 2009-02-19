@@ -1,27 +1,14 @@
 #summary Quick Start
 #labels Phase-Implementation
 
-= Sample Project = 
-
-I recently added a sample project to help you get started (and help me work out kinks in the code).  Just grab the whole project with a
-{{{
-mkdir tsearch
-cd tsearch
-svn export --force http://acts-as-tsearch.googlecode.com/svn/trunk/ .
-}}}
-
-and read the README.
-
-For the plugin only - directions below...
-
 = Introduction =
 
-After you've [PreparingYourPostgreSQLDatabase set-up your database] follow these quick steps to get up and running.  See [AdvancedSearching advanced searching] for doing more complex work.
+After you've [PreparingYourPostgreSQLDatabase set-up your database] follow these quick steps to get up and running.
 
 == Get the plugin ==
 
 {{{
-ruby script/plugin install http://acts-as-tsearch.googlecode.com/svn/trunk/vendor/plugins/acts_as_tsearch
+ruby script/plugin install git://github.com/pka/acts_as_tsearch.git
 }}}
 
 == Add acts_as_tsearch to a model ==
@@ -42,4 +29,16 @@ puts blog_entries[0].title
 }}}
 
 == Note extra column ==
-Searches are default sorted by the added column tsearch_rank.  For more on this see [AdvancedSearching advanced searching]
+Searches are default sorted by the added column tsearch_rank.
+
+
+= Sample Project = 
+
+A sample project to help you get started, especially if you're using PostgreSQL 8.2 or older. Just grab the whole project with a
+{{{
+mkdir tsearch
+cd tsearch
+svn export --force http://acts-as-tsearch.googlecode.com/svn/trunk/ .
+}}}
+
+and read the README.
