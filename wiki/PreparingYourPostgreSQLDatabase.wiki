@@ -1,4 +1,4 @@
-#summary Preparing your PostgreSQL Database
+#summary Preparing your PostgreSQL database
 #labels Phase-Deploy
 
 = PostgreSQL 8.3 and newer =
@@ -9,7 +9,7 @@ Add a text search configuration 'default':
 CREATE TEXT SEARCH CONFIGURATION public.default ( COPY = pg_catalog.english )
 }}}
 
-See the PostgrSQL [http://www.postgresql.org/docs/current/static/textsearch-configuration.html manual] for more information.
+See the PostgreSQL [http://www.postgresql.org/docs/current/static/textsearch-configuration.html manual] for more information.
 
 For portability issues and converting pre-8.3 installations see the [http://www.postgresql.org/docs/current/static/tsearch2.html tsearch2] module documentation.
 
