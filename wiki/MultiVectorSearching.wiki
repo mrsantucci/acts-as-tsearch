@@ -47,7 +47,7 @@ Profile.acts_as_tsearch :public_vector => {:fields => [:name, :public_info]},
                         :private_vector => {:fields => [:name, :private_info]}
 }}}
 
-You then simply specify the vector when search (see [FindByTsearchMethod find_by_search] doc for details):
+You then simply specify the vector when search:
 {{{
     #Only search public fields
     p = Profile.find_by_tsearch("ben",nil,{:vector => "public_vector"})
