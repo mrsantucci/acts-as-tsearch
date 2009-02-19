@@ -12,7 +12,7 @@ CREATE TEXT SEARCH CONFIGURATION public.default ( COPY = pg_catalog.english )
 See the PostgrSQL [http://www.postgresql.org/docs/current/static/textsearch-configuration.html manual] for more information.
 
 
-= TSearch installation for PostgreSQL older than 8.3 =
+= TSearch installation for PostgreSQL 8.2 and older =
 
 [http://www.sai.msu.su/~megera/postgres/gist/tsearch/V2/ TSearch] is an offical contribution module in [http://www.postgresql.org/ PostgreSQL] 7.4 to 8.2. Depending on how you installed Postgres you might to do some of these steps.
 
