@@ -3,7 +3,7 @@
 
 = Introduction =
 
-[http://www.sai.msu.su/~megera/postgres/gist/tsearch/V2/ TSearch] comes with current releases of [http://www.postgresql.org/ PostgreSQL].  Depending on how you installed Postgres you might to do some of these steps.
+[http://www.sai.msu.su/~megera/postgres/gist/tsearch/V2/ TSearch] was an offical contribution module in [http://www.postgresql.org/ PostgreSQL] 7.4 to 8.2. Depending on how you installed Postgres you might to do some of these steps.
 
 I recently added an experimental shell script to the root of the project called dbsetup.sh... you can give that a shot if you want - it might do this all for you:
 {{{
@@ -80,6 +80,3 @@ your_data_base_name=# select to_tsvector('default','Our first string used today 
  'use':4 'first':2,6 'today':5 'string':3,7
 (1 row)
 }}}
-
-=To Do=
-Some users might have to patch PostgreSQL - it'd be nice to have more information on this and also clean up trouble shooting a bit.
