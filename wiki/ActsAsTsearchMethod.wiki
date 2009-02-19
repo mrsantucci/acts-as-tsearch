@@ -7,13 +7,11 @@ This covers the basics of acts_as_tsearch declaration and *not* the `find_by_tse
 
 Also see:
   # [MultiVectorSearching multi-vector-searching]
-  # [FindByTsearchMethod find_by_tsearch method]
   # [Migrations migrations]
-  # [StraightSQL straigh sql]
 
 = Ground Rules =
   # acts_as_tsearch will create a new column *vectors* in your table if it doesn't exist and update it with the indexed values.  This column name can be overridden and there can be more than one of these vector columns.  We discuss this in [MultiVectorSearching Multi Vector Searching] and [Migrations Migrations]
-  # acts_as_tsearch adds a tsearch_rank column to all results and default sorts (descending) on that column.  See the [FindByTsearchMethod find_by_tsearch method] discussion for details.
+  # acts_as_tsearch adds a tsearch_rank column to all results and default sorts (descending) on that column.
   # By default acts_as_tsearch will update the vector unless told not to (see Method Definition below)
 
 = Simple =
@@ -88,7 +86,7 @@ _To Do: needs work_
 Fully verbose call example
 {{{
 Model.acts_as_tsearch :vectors => {
-   :local => "default",
+   :locale => "default",
    :auto_update_index => true,
    :fields => {
       "a" => {:columns => ["blog_entries.title"], :weight => 1},
